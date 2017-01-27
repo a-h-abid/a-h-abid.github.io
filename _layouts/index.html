@@ -1,0 +1,30 @@
+---
+layout: compress
+---
+<!DOCTYPE html>
+<html lang="{{ site.lang }}">
+
+  {% include head.html %}
+
+  <body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top"  data-offset="151">
+
+    {% include navigation.html %}
+
+    <h1 class="sr-only">Personal Site of Ahmedul Haque Abid</h1>
+
+    {% include header.html %}
+
+    {% for p in site.pages_list %}
+      {% for page in site.pages %}
+        {% if p[1] == page.section-type %}
+          {% include {{ page.path }} %}
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+
+    {% include footer.html %}
+
+    {% include js.html %}
+
+  </body>
+</html>
