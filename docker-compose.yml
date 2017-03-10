@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+
+  nginx:
+    build:
+      context: ./
+      dockerfile: ./docker/nginx/Dockerfile
+    ports:
+      - "4000:80"
+    volumes:
+      - ./_site:/usr/share/nginx/html
+    depends_on:
+      - jekyll
+
+  jekyll:
+    build:
+      context: ./
+      dockerfile: ./docker/jekyll/Dockerfile
+    command: jekyll build --watch --force_polling
+    volumes:
+      - .:/src
